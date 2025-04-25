@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+    <style>
+        .espacio {
+            padding-left: 40px;
+        }
+        .buttoncl {
+            background-color: #0056b3;
+            width: 100px;
+            color: white;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+        .cancel-btn {
+            background-color: #f44336;
+            width: 100px;
+            color: white;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body bgcolor="#154360">
+    <form name="signup.html" action="" method="post">
+    <br><br><br><br><br><br>
+    <table border="0" align="center" bgcolor="white">
+        <tr>
+            <th>REGISTRARSE</th>
+        </tr>
+        <tr>
+            <td class="espacio"><input style="width: 300px;" type="text" placeholder="Nombre" required><br><br></td>
+        </tr>
+        <tr>
+            <td class="espacio"><input style="width: 300px;" type="text" placeholder="Apellido" required><br><br></td>
+        </tr>
+        <tr>
+            <td class="espacio"><input style="width: 300px;" type="email" placeholder="Correo electronico" required><br><br></td>
+        </tr>
+        <tr>
+            <td class="espacio"><input style="width: 300px;" type="password" placeholder="Contraseña" required><br><br></td>
+        </tr>
+        <tr>
+            <td class="espacio"><input style="width: 300px;" type="password" placeholder="Confirmar contraseña" required><br><br></td>
+        </tr>
+        <tr>
+            <td class="espacio"><input style="width: 300px;" type="tel" placeholder="Telefono" required><br><br></td>
+        </tr>
+        <tr>    
+            <td class="espacio">¿Ya tienes una cuenta? <a href="login.html"><font size="2" color="black">Iniciar Sesión Ahora.</font></a></td>
+        </tr>
+        <tr>    
+            <td class="espacio"><input type="checkbox" required>Aceptar <a href="#"><font size="2" color="black">Termino condiciones</font><br><br></a></td>
+        </tr>
+        <tr>    
+            <td class="espacio">
+                <button type="button" onclick="window.location.href='login.html'" class="cancel-btn">Cancelar</button>
+                <button type="submit" class="buttoncl">Registrarse</button>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar contraseña</title>
+    <style>
+        .espacio {
+            padding-left: 40px;
+        }
+        .buttoncl {
+            background-color: #0056b3;
+            width: 100px;
+            color: white;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+        input.invalid {
+            border: 1px solid red;
+        }
+        input.valid {
+            border: 1px solid green;
+        }
+    </style>
+</head>
+<body bgcolor="#154360">
+    <form name="recover.html" action="login.html" method="post" onsubmit="return validarContrasenas()">
+    <br><br><br><br><br><br>
+    <table border="0" align="center" bgcolor="white">
+        <tr>
+            <th>RECUPERAR TU CONTRASEÑA</th>
+        </tr>
+        <tr>
+            <td class="espacio">Por favor, ingresar su nueva contraseña con<br>
+            al menos 8 caracteres..<br><br></td>
+        </tr>
+        <tr>
+            <td class="espacio"><label>Nueva contraseña</label><br></td>
+        </tr>
+        <tr>     
+            <td class="espacio">
+                <input id="nuevaContrasena" style="width: 300px;" type="password" placeholder="Nueva contraseña (mínimo 8 caracteres)" required>
+                <div id="errorLongitud" class="error">La contraseña debe tener al menos 8 caracteres</div>
+                <br><br>
+            </td>
+        </tr>
+        <tr>
+           <td class="espacio"><label>Confirmar contraseña</label></td> 
+        </tr>
+        <tr>  
+           <td class="espacio">
+               <input id="confirmarContrasena" style="width: 300px;" type="password" placeholder="Confirmar contraseña" required>
+               <div id="errorCoincidencia" class="error">Las contraseñas no coinciden</div>
+               <br><br>
+           </td>
+       </tr>
+        <tr>    
+            <td class="espacio">
+                <button type="button" onclick="window.location.href='login.html'" class="buttoncl">Cancelar</button>
+                <button type="submit" class="buttoncl">Recuperar</button>
+            </td>
+        </tr>
+    </table>
+    </form>
+
+    <script>
+        // Elementos del DOM
+        const nuevaContrasenaInput = document.getElementById('nuevaContrasena');
+        const confirmarContrasenaInput = document.getElementById('confirmarContrasena');
+        const errorLongitud = document.getElementById('errorLongitud');
+        const errorCoincidencia = document.getElementById('errorCoincidencia');
+
+        // Validación en tiempo real
+        nuevaContrasenaInput.addEventListener('input', validarLongitud);
+        confirmarContrasenaInput.addEventListener('input', validarCoincidencia);
+
+        function validarLongitud() {
+            if (nuevaContrasenaInput.value.length < 8 && nuevaContrasenaInput.value.length > 0) {
+                errorLongitud.style.display = 'block';
+                nuevaContrasenaInput.classList.add('invalid');
+                nuevaContrasenaInput.classList.remove('valid');
+            } else if (nuevaContrasenaInput.value.length >= 8) {
+                errorLongitud.style.display = 'none';
+                nuevaContrasenaInput.classList.add('valid');
+                nuevaContrasenaInput.classList.remove('invalid');
+            } else {
+                errorLongitud.style.display = 'none';
+                nuevaContrasenaInput.classList.remove('invalid', 'valid');
+            }
+        }
+
+        function validarCoincidencia() {
+            const nuevaContrasena = nuevaContrasenaInput.value;
+            const confirmarContrasena = confirmarContrasenaInput.value;
+            
+            if (nuevaContrasena !== confirmarContrasena && confirmarContrasena.length > 0) {
+                errorCoincidencia.style.display = 'block';
+                confirmarContrasenaInput.classList.add('invalid');
+                confirmarContrasenaInput.classList.remove('valid');
+            } else if (nuevaContrasena === confirmarContrasena && confirmarContrasena.length > 0) {
+                errorCoincidencia.style.display = 'none';
+                confirmarContrasenaInput.classList.add('valid');
+                confirmarContrasenaInput.classList.remove('invalid');
+            } else {
+                errorCoincidencia.style.display = 'none';
+                confirmarContrasenaInput.classList.remove('invalid', 'valid');
+            }
+        }
+
+        function validarContrasenas() {
+            // Validar longitud
+            if (nuevaContrasenaInput.value.length < 8) {
+                errorLongitud.style.display = 'block';
+                nuevaContrasenaInput.classList.add('invalid');
+                nuevaContrasenaInput.focus();
+                return false;
+            }
+            
+            // Validar coincidencia
+            if (nuevaContrasenaInput.value !== confirmarContrasenaInput.value) {
+                errorCoincidencia.style.display = 'block';
+                confirmarContrasenaInput.classList.add('invalid');
+                confirmarContrasenaInput.focus();
+                return false;
+            }
+            
+            return true;
+        }
+    </script>
+</body>
+</html>

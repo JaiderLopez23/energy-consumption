@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar contraseña</title>
+    <style>
+         .espacio {
+            padding-left: 40px;
+        }
+        .buttoncl {
+            background-color: #0056b3;
+            width: 100px;
+            color: white;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+        .cancel-btn {
+            background-color: #f44336;
+            width: 100px;
+            color: white;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body bgcolor="#154360">
+    <br><br><br><br><br><br>
+    <form name="recuperar_contraseña.html" action="codigo_seguridad.html" method="post">
+    <table border="0" align="center" bgcolor="white">
+        <tr>
+            <th>RECUPERAR TU CONTRASEÑA</th>
+        </tr>
+        <tr>
+            <td class="espacio">Por favor, ingrese su dirección de correo electrónico<br>
+                registrado..<br><br></td>
+        </tr>
+        <tr>
+             <!--
+            <td><label>Usuario</label></td>
+            -->
+        <td class="espacio"><input style="width: 300px;" type="email" placeholder="Correo electrónico" required><br><br></td>
+        </tr>
+        <tr>    
+            <td class="espacio">
+                <button type="button" onclick="window.location.href='login.html'" class="cancel-btn">Cancelar</button>
+                <button type="submit" class="buttoncl">Siguiente</button>
+            </td>
+        </tr>
+
+    </table>
+</form>
+</body>
+</html>
