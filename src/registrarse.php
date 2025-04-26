@@ -31,8 +31,8 @@
         ";
     $ans = pg_query($conn, $sql);
     if($ans){
-     echo "<script>alert('User has created. Go to login')";
-     header('Refresh:0;URL=http://localhost/energy-consumption/src/login.html');
+     echo "<script>alert('User has created. Go to registrarse')";
+     header('Refresh:0;URL=http://localhost/energy-consumption/src/registrarse.html');
     }else{
         echo "Error";
     }    
