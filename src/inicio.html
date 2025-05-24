@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio</title>
+    <title>Energy Consumption | Inicio</title>
+    <link rel="icon" type="image/png" href="src/icons/icono.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -19,35 +21,57 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Roboto', sans-serif;
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             background-color: #f5f5f5;
             color: var(--dark-text);
+            min-height: 100vh;
         }
         
         /* Menú vertical */
         .menu {
-            width: 200px;
+            width: 250px;
             background-color: var(--primary-color);
             color: var(--light-text);
             height: 100vh;
-            padding: 20px 0;
+            padding: 30px 0;
             position: fixed;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .menu-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-logo {
+            width: 40px;
+            margin-right: 10px;
+        }
+        
+        .menu-title {
+            font-size: 18px;
+            font-weight: 500;
         }
         
         .menu-btn {
-            display: block;
+            display: flex;
+            align-items: center;
             width: 100%;
-            padding: 12px 20px;
+            padding: 12px 25px;
             background: none;
             border: none;
             color: var(--light-text);
             text-align: left;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-size: 15px;
         }
         
         .menu-btn:hover {
@@ -58,17 +82,55 @@
             background-color: var(--secondary-color);
         }
         
+        .menu-icon {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
         /* Contenido principal */
         .content {
             flex: 1;
-            margin-left: 200px;
-            padding: 20px;
+            margin-left: 250px;
+            padding: 30px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: 500;
         }
         
         .page {
             display: none;
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .page.active {
@@ -77,50 +139,60 @@
         
         h1 {
             color: var(--primary-color);
-            text-align: center;
             margin-bottom: 30px;
+            font-size: 28px;
         }
         
         /* Estilos para dispositivos */
         .appliance-card {
             background-color: white;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
             display: flex;
             align-items: center;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            border: 2px solid transparent;
         }
         
         .appliance-card:hover {
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .appliance-card.selected {
-            border: 2px solid var(--accent-color);
+            border-color: var(--accent-color);
             background-color: #e8f5e9;
         }
         
         .appliance-card h3 {
             margin-left: 15px;
             color: var(--primary-color);
+            font-size: 16px;
         }
         
         .appliance-icon {
-            font-size: 24px;
-            width: 40px;
-            text-align: center;
+            font-size: 28px;
+            width: 50px;
+            height: 50px;
+            background-color: #f8f9fa;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary-color);
         }
         
         /* Estilos para inputs */
         .hours-input {
             width: 100px;
-            padding: 8px;
+            padding: 10px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 6px;
             margin-left: auto;
+            font-size: 14px;
         }
         
         /* Botones */
@@ -128,49 +200,58 @@
             background-color: var(--accent-color);
             color: white;
             border: none;
-            padding: 12px 20px;
-            border-radius: 4px;
+            padding: 12px 25px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 20px;
             transition: background-color 0.3s;
             display: inline-block;
-            width: auto;
             min-width: 120px;
             text-align: center;
+            font-weight: 500;
         }
         
         .btn:hover {
             background-color: #2ecc71;
         }
         
-        .btn-back {
+        .btn-secondary {
             background-color: #7f8c8d;
-            margin-right: 20px;
+            margin-right: 15px;
         }
         
-        .btn-back:hover {
+        .btn-secondary:hover {
             background-color: #95a5a6;
         }
         
         .btn-container {
             display: flex;
             justify-content: space-between;
-            margin-top: 20px;
+            margin-top: 30px;
         }
         
         /* Resumen */
         .summary {
-            background-color: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
             color: white;
-            border-radius: 8px;
-            padding: 20px;
+            border-radius: 10px;
+            padding: 25px;
             margin: 30px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .summary h2 {
             margin-top: 0;
             text-align: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+        
+        .consumption-value {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin: 15px 0;
         }
         
         .consumption-high {
@@ -179,19 +260,22 @@
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
         }
         
         /* Recomendaciones */
         .recommendations {
-            background-color: var(--light-bg);
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
         }
         
         .recommendations h3 {
             color: var(--primary-color);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-size: 18px;
         }
         
         .recommendations ul {
@@ -199,8 +283,8 @@
         }
         
         .recommendations li {
-            margin-bottom: 8px;
-            line-height: 1.5;
+            margin-bottom: 10px;
+            line-height: 1.6;
         }
         
         /* Lista de dispositivos seleccionados */
@@ -208,68 +292,112 @@
             display: flex;
             align-items: center;
             margin-bottom: 15px;
-            padding: 10px;
+            padding: 15px;
             background-color: white;
             border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
         
         .selected-appliance h3 {
             flex: 1;
             margin-left: 15px;
+            font-size: 15px;
         }
         
         /* Página de inicio */
         .welcome-message {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .welcome-message p {
+            color: #7f8c8d;
+            line-height: 1.6;
+            font-size: 16px;
         }
         
         .app-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
         
         .feature-card {
-            flex: 1;
-            min-width: 200px;
             background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         
         .feature-icon {
-            font-size: 30px;
-            margin-bottom: 15px;
+            font-size: 36px;
+            margin-bottom: 20px;
             color: var(--secondary-color);
+            text-align: center;
+        }
+        
+        .feature-card h3 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            color: #7f8c8d;
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.6;
         }
         
         /* Formulario para agregar dispositivo */
         .add-appliance-form {
             background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin-top: 30px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 40px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .add-appliance-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 18px;
         }
         
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+            font-weight: 500;
         }
         
         .form-group input {
             width: 100%;
-            padding: 8px;
+            padding: 12px;
             border: 1px solid #ddd;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
         }
         
         .btn-add {
@@ -279,50 +407,117 @@
         .btn-add:hover {
             background-color: #2980b9;
         }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu {
+                width: 70px;
+                padding: 20px 0;
+            }
+            
+            .menu-header {
+                justify-content: center;
+                padding: 0 10px 20px;
+            }
+            
+            .menu-title {
+                display: none;
+            }
+            
+            .menu-btn span {
+                display: none;
+            }
+            
+            .menu-icon {
+                margin-right: 0;
+                font-size: 20px;
+            }
+            
+            .content {
+                margin-left: 70px;
+                padding: 20px;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .btn-secondary {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- Menú vertical -->
     <div class="menu">
-        <button class="menu-btn active" data-page="inicio">🏠 Inicio</button>
-        <button class="menu-btn" data-page="dispositivos">📱 Dispositivos</button>
-        <button class="menu-btn" data-page="configuracion">⚙️ Configuración</button>
-        <button class="menu-btn" data-page="ayuda">❓ Ayuda</button>
+        <div class="menu-header">
+            <svg class="menu-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+            </svg>
+            <span class="menu-title">Energy Control</span>
+        </div>
+        
+        <button class="menu-btn active" data-page="inicio">
+            <span class="menu-icon">🏠</span>
+            <span>Inicio</span>
+        </button>
+        <button class="menu-btn" data-page="dispositivos">
+            <span class="menu-icon">📱</span>
+            <span>Dispositivos</span>
+        </button>
+        <button class="menu-btn" data-page="configuracion">
+            <span class="menu-icon">⚙️</span>
+            <span>Configuración</span>
+        </button>
+        <button class="menu-btn" data-page="ayuda">
+            <span class="menu-icon">❓</span>
+            <span>Ayuda</span>
+        </button>
     </div>
     
     <!-- Contenido principal -->
     <div class="content">
+        <div class="header">
+            <h1>Panel de Control</h1>
+            <div class="user-info">
+                <div class="user-avatar">U</div>
+                <span>Usuario</span>
+            </div>
+        </div>
+        
         <!-- Página de inicio -->
         <div class="page active" id="inicio">
-            <h1>Evaluación y Reducción del Consumo<br>
-                Energético en el Hogar</h1>
             <div class="welcome-message">
-                <p>Bienvenido al simulador de consumo energético para el hogar. Esta herramienta te ayudará a calcular y optimizar tu consumo de energía eléctrica.</p>
+                <h1>Evaluación y Reducción del Consumo Energético</h1>
+                <p>Bienvenido al sistema de control de consumo energético para el hogar. Esta herramienta te ayudará a calcular, monitorear y optimizar tu consumo de energía eléctrica, reduciendo costos y contribuyendo al cuidado del medio ambiente.</p>
             </div>
             
             <div class="app-features">
                 <div class="feature-card">
                     <div class="feature-icon">💡</div>
-                    <h3>Monitoreo</h3>
-                    <p>Calcula el consumo de todos tus electrodomésticos</p>
+                    <h3>Monitoreo Inteligente</h3>
+                    <p>Calcula el consumo exacto de todos tus electrodomésticos y dispositivos eléctricos en tiempo real.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
-                    <h3>Ahorro</h3>
-                    <p>Descubre cómo reducir tus costos de energía</p>
+                    <h3>Ahorro Económico</h3>
+                    <p>Identifica oportunidades para reducir tus costos de energía sin sacrificar tu comodidad.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🌱</div>
                     <h3>Sostenibilidad</h3>
-                    <p>Contribuye al cuidado del medio ambiente</p>
+                    <p>Contribuye al cuidado del medio ambiente reduciendo tu huella de carbono.</p>
                 </div>
             </div>
         </div>
         
         <!-- Página de selección de dispositivos -->
         <div class="page" id="dispositivos">
-            <h1>Selecciona tus dispositivos</h1>
-            <p>Elige los electrodomésticos que deseas incluir en el cálculo de consumo:</p>
+            <h1>Gestión de Dispositivos</h1>
+            <p>Selecciona los electrodomésticos que deseas incluir en el cálculo de consumo:</p>
             
             <div id="appliances-list">
                 <div class="appliance-card" data-appliance="televisor">
@@ -374,14 +569,14 @@
             </div>
             
             <div class="btn-container">
-                <button class="btn btn-back" id="btn-back-to-home">Regresar</button>
+                <button class="btn btn-secondary" id="btn-back-to-home">Regresar</button>
                 <button class="btn" id="btn-next">Siguiente</button>
             </div>
         </div>
         
         <!-- Página de configuración de horas -->
         <div class="page" id="configuracion-horas">
-            <h1>Configuración de consumo</h1>
+            <h1>Configuración de Consumo</h1>
             <p>Ingresa las horas de uso diario para cada dispositivo seleccionado:</p>
             
             <div id="selected-appliances-list">
@@ -389,15 +584,16 @@
             </div>
             
             <div class="btn-container">
-                <button class="btn btn-back" id="btn-back-to-devices">Regresar</button>
+                <button class="btn btn-secondary" id="btn-back-to-devices">Regresar</button>
                 <button class="btn" id="btn-calculate">Calcular consumo</button>
             </div>
             
             <div class="summary" id="consumo-resumen" style="display: none;">
-                <h2>Resumen</h2>
-                <h3>Consumo diario (kWh)</h3>
-                <p><strong>Total:</strong> <span id="total-consumo">0.0</span> kWh</p>
-                <p><strong>Costo estimado:</strong> <span id="costo-estimado">0</span> COP</p>
+                <h2>Resumen de Consumo</h2>
+                <div class="consumption-value">
+                    <span id="total-consumo">0.0</span> kWh
+                </div>
+                <p style="text-align: center;"><strong>Costo estimado:</strong> $<span id="costo-estimado">0</span> COP/día</p>
                 <p class="consumption-high" id="consumption-warning" style="display: none;"></p>
             </div>
             
@@ -411,21 +607,21 @@
         
         <!-- Página de configuración -->
         <div class="page" id="configuracion">
-            <h1>Configuración</h1>
-            <p>Aquí puedes configurar los parámetros de tu simulador:</p>
+            <h1>Configuración del Sistema</h1>
+            <p>Configura los parámetros de tu sistema de monitoreo energético.</p>
             
             <div class="btn-container">
-                <button class="btn btn-back" id="btn-back-to-home-from-config">Regresar</button>
+                <button class="btn btn-secondary" id="btn-back-to-home-from-config">Regresar</button>
             </div>
         </div>
         
         <!-- Página de ayuda -->
         <div class="page" id="ayuda">
-            <h1>Ayuda</h1>
-            <p>Información de ayuda y preguntas frecuentes:</p>
+            <h1>Centro de Ayuda</h1>
+            <p>Encuentra respuestas a tus preguntas y aprende a usar el sistema.</p>
             
             <div class="btn-container">
-                <button class="btn btn-back" id="btn-back-to-home-from-help">Regresar</button>
+                <button class="btn btn-secondary" id="btn-back-to-home-from-help">Regresar</button>
             </div>
         </div>
     </div>

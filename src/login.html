@@ -1,56 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>energy consumption</title>
+    <title>Energy Consumption | Iniciar Sesión</title>
     <link rel="icon" type="image/png" href="src/icons/icono.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        .espacio {
-            padding-left: 40px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
         }
-        .buttoncl{
-            background-color:#0056b3 ;
-            width: 275px;
+        
+        body {
+            background: linear-gradient(135deg, #154360 0%, #1a5276 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .login-container {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+        }
+        
+        .logo-section {
+            background: linear-gradient(135deg, #1a5276 0%, #2980b9 100%);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             color: white;
+            width: 40%;
+        }
+        
+        .logo {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+        
+        .logo-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .logo-subtitle {
+            font-size: 14px;
+            font-weight: 300;
+            text-align: center;
+            opacity: 0.9;
+        }
+        
+        .form-section {
+            padding: 40px;
+            width: 60%;
+        }
+        
+        .form-title {
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .welcome-text {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            border-color: #2980b9;
+            box-shadow: 0 0 0 3px rgba(41, 128, 185, 0.2);
+            outline: none;
+        }
+        
+        input::placeholder {
+            color: #bbb;
+        }
+        
+        .forgot-password {
+            display: block;
+            text-align: right;
+            font-size: 13px;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .forgot-password:hover {
+            color: #2980b9;
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #2980b9;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2472a4;
+        }
+        
+        .register-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .register-link a {
+            color: #2980b9;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .login-container {
+                flex-direction: column;
+            }
+            
+            .logo-section, .form-section {
+                width: 100%;
+            }
+            
+            .logo-section {
+                padding: 30px;
+            }
         }
     </style>
 </head>
-<body bgcolor="#154360">
-    
-        <br><br><br><br><br><br>
-        <form name="login.html" action="inicio.html" method="post">
-        <table border="0" align="center" bgcolor="white">  
-        <tr>
-            <td align="center" style="vertical-align: top;" rowspan="8"><img src="src/icons/icono.png" width="275"></td>
-            <th style="width:350px;">ENERGY CONSUMPTION <br><br></th>
-        </tr>      
-        <tr>
-            <td class="espacio" style="font-size: 14px;">Bienvenido, ten el control de tus consumo <br>en tu manos... <br><br></td>
-        </tr> 
-        <tr>
-            <!--
-            <td><label>Usuario</label></td>
-            -->
-        <td class="espacio"><input style="width: 270px;" type="email" placeholder="Nombre usurario" required><br><br></td>
-        </tr>
-        <tr>     
-            <!--   
-            <td><label>Contraseña</label></td>
-             -->
-            <td class="espacio"><input style="width: 270px;" type="password" placeholder="contraseña" required><br><br></td>
-        </tr>
-        <tr>    
-            <td class="espacio"><a href="recuperar_contraseña.html"><font size="2" color="black">¿Has olvidado tu contraseña?</font></a></td>
-        </tr>
-        <tr>    
-            <td class="espacio"><button class="buttoncl">Iniciar Sesion</button></td>
-        </tr>
-        <tr>
-            <td align="center"><a href="registrarse.html"><font size="2" color="black">Registrarse</font><br><br></a></td>
-        </tr>
+<body>
+    <div class="login-container">
+        <div class="logo-section">
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+            </svg>
+            <h1 class="logo-title">Energy Consumption</h1>
+            <p class="logo-subtitle">Control inteligente de energía</p>
+        </div>
         
-    </table>   
-    </form>
+        <div class="form-section">
+            <h1 class="form-title">Iniciar Sesión</h1>
+            <p class="welcome-text">Bienvenido, ten el control de tu consumo energético en tus manos</p>
+            
+            <form name="login.html" action="inicio.html" method="post">
+                <div class="input-group">
+                    <input type="email" placeholder="Correo electrónico" required>
+                </div>
+                
+                <div class="input-group">
+                    <input type="password" placeholder="Contraseña" required>
+                </div>
+                
+                <a href="recuperar_contraseña.html" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                
+                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                
+                <p class="register-link">¿No tienes una cuenta? <a href="registrarse.html">Regístrate</a></p>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
