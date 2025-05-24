@@ -6,7 +6,7 @@
    $tel   = $_POST['t_el'];
    $email = $_POST['e_mail'];
    $pass  = $_POST['p_ass'];
-
+   
    // INCRIPTAR CONTRASEÑA
    $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
    
@@ -32,7 +32,8 @@
     $ans = pg_query($conn, $sql);
     if($ans){
      echo "<script>alert('User has created. Go to registrarse')";
-     header('Refresh:0;URL=http://localhost/energy-consumption/src/registrarse.html');
+     header('Refresh:0;URL=http://localhost/energy-consumption/src/login.html');
+     
     }else{
         echo "Error";
     }    
