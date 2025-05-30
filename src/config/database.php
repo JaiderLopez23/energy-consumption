@@ -15,4 +15,11 @@
   ";
 
   $conn = pg_connect($data_connection);
+  
+  if(!$conn){
+        echo "Connection error";
+
+    }else{
+        echo "Success !!!";
+    }
 ?>

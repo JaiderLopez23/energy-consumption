@@ -1,6 +1,7 @@
 <?php 
-   include('config/database.php');
-
+   include('../config/database.php');
+  // lopcal
+  
    $nom   = $_POST['n_om'];
    $ape   = $_POST['a_pe'];
    $tel   = $_POST['t_el'];
