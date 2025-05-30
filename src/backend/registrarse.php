@@ -1,7 +1,7 @@
 <?php 
    include('../config/database.php');
-  // lopcal
-  
+  // local
+
    $nom   = $_POST['n_om'];
    $ape   = $_POST['a_pe'];
    $tel   = $_POST['t_el'];
@@ -9,8 +9,8 @@
    $pass  = $_POST['p_ass'];
    
    // INCRIPTAR CONTRASEÑA
-   $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
-   
+   //$hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+   $hashed_password = $pass;
    $sql_validate_email ="
        select
          COUNT(id) as total
@@ -32,7 +32,7 @@
         ";
     $ans = pg_query($conn, $sql);
     if($ans){
-     echo "<script>alert('User has created. Go to registrarse')";
+     echo "<script>alert('User has created. Go to registrarse')</script>";
      header('Refresh:0;URL=http://localhost/energy-consumption/src/login.html');
      
     }else{

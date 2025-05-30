@@ -1,5 +1,6 @@
 <?php 
-
+  // Database connection
+  // local
   $host       ="localhost";
   $port       ="5432";
   $dbname     ="energy_consumption";
@@ -15,7 +16,7 @@
   ";
 
   $conn = pg_connect($data_connection);
-  
+
   if(!$conn){
         echo "Connection error";
 
